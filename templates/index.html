@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Call</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-left">
+                <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="Site Logo" class="navbar-logo">
+            </div>
+            <div class="navbar-right">
+                <button id="logout" onclick="window.location.href='/logout'">
+                    <i class="bi bi-box-arrow-right"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+    <hr>
+    <div id="videos" class="video-container">
+        <div class="video-box">
+            <img src="{{ url_for('static', filename='images/left.jpg') }}" alt="Local Placeholder" class="placeholder" id="localPlaceholder">
+            <video id="localVideo" autoplay muted></video>
+            <div class="video-overlay">
+                <span>{{ current_user.email }}</span>
+            </div>
+        </div>
+        <div class="video-box">
+            <img src="{{ url_for('static', filename='images/right.jpg') }}" alt="Remote Placeholder" class="placeholder" id="remotePlaceholder">
+            <video id="remoteVideo" autoplay></video>
+            <div class="video-overlay">
+                <span id="receiver-id"></span>
+            </div>
+        </div>
+    </div>
+    <div class="email-input-container">
+        <label for="peerEmail" class="email-label">Peer Email:</label>
+        <input type="text" id="peerEmail" name="peerEmail" class="email-input"placeholder="hello@gmail.com">
+    </div>
+    <hr>
+    
+    <div class="controls">
+        <button id="startVideo" class="control-btn"><i class="bi bi-camera-reels"></i></button>
+        <button id="startScreen" class="control-btn"><i class="bi bi-display"></i></button>
+        <button id="startAudio" class="control-btn"><i class="bi bi-mic"></i></button>
+        <button id="disconnectCall" class="control-btn"><i class="bi bi-telephone-x"></i></button>
+    </div>
+    <audio id="localAudio" autoplay muted></audio>
+    <audio id="remoteAudio" autoplay></audio>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <img src="{{ url_for('static', filename='images/logo2.png') }}" alt="Site Logo" class="footer-logo">
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/MuhammadHamza00/pings" target="_blank" class="github-link">
+                    <i class="bi bi-github"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/peerjs@1.5.3/dist/peerjs.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

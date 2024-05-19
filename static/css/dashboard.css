@@ -1,0 +1,246 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #202224;
+    color: #fff;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.navbar {
+    width: 95%;
+    background-color: #202224;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 50px;
+    /* margin-right: 10px; */
+}
+
+.site-name {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+
+.video-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.video-box {
+    position: relative;
+    width: 45%;
+    margin-bottom: 20px;
+}
+
+.placeholder {
+    width: 100%;
+    height: auto;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    display: block;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: none; /* Hide the video element initially */
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    background-color: #202224;
+    padding: 10px 0;
+}
+
+.control-btn {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 50%;
+    border: 1px solid #27292b;
+    background-color: #2e3234;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+.control-btn i {
+    font-size: 20px;
+}
+
+.control-btn:hover {
+    background-color: #ff5722;
+}
+
+
+audio {
+    display: none;
+}
+
+/* Styling for the email input container */
+.email-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Styling for the label */
+.email-label {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+/* Styling for the input */
+.email-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border: 2px solid #36393b;
+    border-radius: 5px;
+    background-color: #2e3234;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input focus state */
+.email-input:focus {
+    border-color: #5f9ce2;
+    box-shadow: 0 0 10px rgba(74, 198, 236, 0.5);
+}
+
+hr{
+    height: 5px;
+    width: 95%;
+}
+
+#logout {
+    margin: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff5722;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#logout:hover {
+    background-color: red;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .video-box {
+        width: 100%;
+    }
+
+}
+/* Footer */
+
+.footer {
+    width: 95%;
+    background-color: #202224;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+
+.footer-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo {
+    height: 40px;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.github-link {
+    color: #ffffff;
+    font-size: 24px;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.github-link:hover {
+    color: #ff5722;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-right {
+        margin-top: 10px;
+    }
+}
