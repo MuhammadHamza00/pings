@@ -52,9 +52,9 @@ body {
 
 .video-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    max-width: 90%;
     align-items: center;
-    width: 90%;
     margin-top: 20px;
     flex-wrap: wrap;
 }

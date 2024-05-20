@@ -15,9 +15,6 @@ let currentCall = null;
 
 peer.on('open', id => {
     console.log('My peer ID is: ' + id);
-    // document.getElementById('displayPeerId').innerText = id;
-
-    // Send the peer ID to the server to update the user's peer ID
     fetch('/update_peer_id', {
         method: 'POST',
         headers: {
@@ -36,11 +33,13 @@ peer.on('open', id => {
     });
 });
 
-
 const getPeerEmail = () => document.getElementById('peerEmail').value;
 
 const handleIncomingStream = (stream, type) => {
+    console.log("Handle incoming stream function called for remote video")
     if (type === 'video' || type === 'screen') {
+        document.getElementById('remotePlaceholder').style.display =  'none';
+        document.getElementById('remoteVideo').style.display =  'block';
         document.getElementById('remoteVideo').srcObject = stream;
     } else if (type === 'audio') {
         document.getElementById('remoteAudio').srcObject = stream;
@@ -53,6 +52,7 @@ const startStream = async (streamType) => {
         if (streamType === 'video') {
             stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
             document.getElementById('localVideo').srcObject = stream;
+            console.log("Local stream function")
         } else if (streamType === 'screen') {
             stream = await navigator.mediaDevices.getDisplayMedia({ video: true });
             document.getElementById('localVideo').srcObject = stream;
@@ -74,8 +74,10 @@ const startStream = async (streamType) => {
             const data = await response.json();
             if (data.peerId) {
                 const call = peer.call(data.peerId, stream);
+                console.log(data.peerId,stream)
                 currentCall = call;
                 call.on('stream', remoteStream => handleIncomingStream(remoteStream, streamType));
+                console.log("Streaming remote video");
 
                 call.on('close', () => {
                     console.log('Call closed');
@@ -111,6 +113,7 @@ document.getElementById('startVideo').addEventListener('click', () => startStrea
 document.getElementById('startScreen').addEventListener('click', () => startStream('screen'));
 document.getElementById('startAudio').addEventListener('click', () => startStream('audio'));
 document.getElementById('disconnectCall').addEventListener('click', disconnectCall);
+
 document.getElementById('startVideo').addEventListener('click', () => {
     document.getElementById('localPlaceholder').style.display = 'none';
     document.getElementById('localVideo').style.display = 'block';
@@ -130,7 +133,7 @@ document.getElementById('disconnectCall').addEventListener('click', () => {
 
 peer.on('call', call => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
-        call.answer(stream); // Answer the call with an A/V stream.
+        call.answer(stream);
         currentCall = call;
         call.on('stream', remoteStream => handleIncomingStream(remoteStream, 'video'));
 
